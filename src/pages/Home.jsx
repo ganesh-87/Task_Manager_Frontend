@@ -1,5 +1,5 @@
 import TaskList from "../components/TaskList";
-import TaskForm from "../Components/TaskForm";
+import TaskForm from "../components/TaskForm";
 import { createTask } from "../services/api";
 
 const Home = () => {
