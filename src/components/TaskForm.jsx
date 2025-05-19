@@ -6,8 +6,7 @@ const TaskForm = ({ initialTask = {}, onSubmit, isEditing = false }) => {
   const [task, setTask] = useState({
     title: initialTask.title || "",
     description: initialTask.description || "",
-    assignedTo: initialTask.assignedTo || "",
-    dueDate: initialTask.dueDate || "",
+    deadline: initialTask.deadline || "",
     status: initialTask.status || STATUS_OPTIONS[0],
   });
 
@@ -18,7 +17,15 @@ const TaskForm = ({ initialTask = {}, onSubmit, isEditing = false }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(task);
+
+    const formattedTask = {
+      ...task,
+      deadline: task.deadline
+        ? new Date(task.deadline).toISOString().split("T")[0] // 'YYYY-MM-DD' format
+        : null,
+    };
+
+    onSubmit(formattedTask);
   };
 
   return (
@@ -44,18 +51,9 @@ const TaskForm = ({ initialTask = {}, onSubmit, isEditing = false }) => {
         required
       />
       <input
-        type="text"
-        name="assignedTo"
-        placeholder="Assigned To"
-        value={task.assignedTo}
-        onChange={handleChange}
-        className="w-full p-2 border border-gray-300 rounded-lg"
-        required
-      />
-      <input
         type="date"
-        name="dueDate"
-        value={task.dueDate}
+        name="deadline"
+        value={task.deadline}
         onChange={handleChange}
         className="w-full p-2 border border-gray-300 rounded-lg"
         required

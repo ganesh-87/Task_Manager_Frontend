@@ -17,6 +17,7 @@ const TaskCard = ({ task, refreshTasks }) => {
       refreshTasks();
     }
   };
+  const date=new Date();
 
   return (
     <div className="p-4 rounded-2xl shadow-md bg-white border border-gray-200">
@@ -39,8 +40,7 @@ const TaskCard = ({ task, refreshTasks }) => {
               {task.status}
             </span>
             <div className="text-sm text-gray-500">
-              Assigned to:{" "}
-              <span className="font-medium">{task.assignedTo}</span>
+              DueDate: <span className="font-medium">{task.deadline}</span>
             </div>
           </div>
           <div className="flex gap-2 mt-4">
