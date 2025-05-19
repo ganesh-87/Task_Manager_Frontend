@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import TaskForm from "../Components/TaskForm";
-import TaskCard from "../Components/TaskCard";
+import TaskForm from "../components/TaskForm";
+import TaskCard from "../components/TaskCard";
 import {
   getTasks,
   createTask,
